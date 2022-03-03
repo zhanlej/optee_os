@@ -77,8 +77,10 @@ static inline size_t mobj_get_phys_offs(struct mobj *mobj, size_t granule)
 
 static inline TEE_Result mobj_get_cattr(struct mobj *mobj, uint32_t *cattr)
 {
+	EMSG("");
 	if (mobj && mobj->ops && mobj->ops->get_cattr)
 		return mobj->ops->get_cattr(mobj, cattr);
+	EMSG("");
 	return TEE_ERROR_GENERIC;
 }
 

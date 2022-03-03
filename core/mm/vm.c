@@ -277,8 +277,10 @@ TEE_Result vm_map_pad(struct user_mode_ctx *uctx, vaddr_t *va, size_t len,
 		uint32_t cattr;
 
 		res = mobj_get_cattr(mobj, &cattr);
-		if (res)
+		if (res) {
+			EMSG("res:0x%x", res);
 			goto err_free_reg;
+		}
 		attr |= cattr << TEE_MATTR_CACHE_SHIFT;
 	}
 	attr |= TEE_MATTR_VALID_BLOCK;
